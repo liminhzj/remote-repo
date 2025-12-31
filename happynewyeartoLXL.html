@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>跨年爱心宇宙 | 致刘小玲 2026新年快乐</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            border: none;
+            outline: none;
+        }
+
+        /* 纯净深邃银河背景，无任何灰雾 */
+        body {
+            overflow: hidden;
+            background: radial-gradient(ellipse at bottom, #0a101f 0%, #000000 100%);
+            height: 100vh;
+            font-family: "Microsoft YaHei", sans-serif;
+            position: relative;
+            padding: 0;
+            margin: 0;
+        }
+
+        /* 顶部专属文字 - 彩色渐变 */
+        .to-name {
+            position: absolute;
+            top: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 36px;
+            font-weight: bold;
+            z-index: 10;
+            background: linear-gradient(90deg, #ff0000, #ff9900, #33cc33, #3399ff, #9933ff, #ff33cc, #ff0000);
+            background-size: 400% 100%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.9),
+                        0 0 30px rgba(100, 180, 255, 0.7);
+            animation: float 3s infinite ease-in-out, gradientFlow 8s linear infinite;
+            background-color: transparent;
+        }
+
+        /* 立体环绕银河效果 */
+        .galaxy {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            background: 
+                radial-gradient(circle at 50% 50%, transparent 20%, rgba(50, 100, 200, 0.15) 40%, transparent 60%),
+                conic-gradient(from 0deg, rgba(30, 80, 180, 0.08) 0deg, rgba(80, 120, 220, 0.15) 90deg, rgba(30, 80, 180, 0.08) 180deg, rgba(80, 120, 220, 0.15) 270deg, rgba(30, 80, 180, 0.08) 360deg);
+            animation: galaxyRotate 60s linear infinite;
+            box-shadow: none;
+        }
+
+        /* 银河旋转动画 */
+        @keyframes galaxyRotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* 星星的银河背景 */
+        .stars {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            background: transparent;
+        }
+
+        /* 流星容器 */
+        .meteors {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        /* 烟花容器（祝福语旁）- 放大容器尺寸 */
+        .fireworks {
+            position: absolute;
+            top: 50%;
+            right: 180px; /* 祝福语左侧，位置适配 */
+            transform: translateY(-50%);
+            width: 300px; /* 原200px → 300px */
+            height: 400px; /* 原300px → 400px */
+            pointer-events: none;
+            z-index: 9; /* 低于文字，高于银河/流星 */
+        }
+
+        /* 爱心容器：居中 + 3D视角 */
+        .heart-container {
+            position: absolute;
+            top: 50%;
+            left: 30%;
+            transform: translate(-50%, -50%);
+            perspective: 1500px;
+            z-index: 5;
+            background: transparent;
+        }
+
+        /* 星星组成的红色爱心容器 - 旋转180度 + 跳动 */
+        .heart {
+            width: 200px;
+            height: 200px;
+            position: relative;
+            transform: rotate(180deg);
+            animation: beat 1.8s infinite ease-in-out;
+            background: transparent;
+        }
+
+        /* 强化爱心跳动动画（大小+亮度变化） */
+        @keyframes beat {
+            0%, 100% { 
+                transform: rotate(180deg) scale(1); 
+            }
+            25% {
+                transform: rotate(180deg) scale(1.08);
+            }
+            50% { 
+                transform: rotate(180deg) scale(1.15); 
+            }
+            75% {
+                transform: rotate(180deg) scale(1.08);
+            }
+        }
+
+        /* 顶部文字漂浮动画 */
+        @keyframes float {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(-10px); }
+        }
+
+        /* 右侧七彩祝福语 */
+        .blessing {
+            position: absolute;
+            top: 50%;
+            right: 100px;
+            transform: translateY(-50%);
+            max-width: 400px;
+            line-height: 2;
+            font-size: 22px;
+            font-weight: 500;
+            z-index: 10;
+            background: linear-gradient(90deg, #ff0000, #ff9900, #33cc33, #3399ff, #9933ff, #ff33cc, #ff0000);
+            background-size: 400% 100%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+            animation: gradientFlow 8s linear infinite, fadeIn 3s ease-in-out;
+            background-color: transparent;
+        }
+
+        /* 七彩文字流动动画 */
+        @keyframes gradientFlow {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+
+        /* 祝福语渐入动画 */
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(-50%) translateX(20px); }
+            100% { opacity: 1; transform: translateY(-50%) translateX(0); }
+        }
+
+        /* 流星动画 */
+        @keyframes meteor {
+            0% { 
+                opacity: 0; 
+                transform: rotate(-45deg) translateX(0) translateY(0);
+            }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { 
+                opacity: 0; 
+                transform: rotate(-45deg) translateX(-100px) translateY(100px);
+            }
+        }
+
+        /* 圆点烟花粒子动画 - 模拟物理轨迹：加速→减速+尾迹衰减 */
+        @keyframes firework {
+            0% {
+                opacity: 1;
+                transform: translate(0, 0) scale(1);
+                filter: brightness(1.5); /* 初始高亮 */
+            }
+            20% {
+                opacity: 1;
+                transform: translate(calc(var(--tx) * 0.3), calc(var(--ty) * 0.3)) scale(1.2);
+                filter: brightness(1.2);
+            }
+            50% {
+                opacity: 0.8;
+                transform: translate(calc(var(--tx) * 0.7), calc(var(--ty) * 0.7)) scale(1);
+                filter: brightness(1);
+            }
+            100% {
+                opacity: 0;
+                transform: translate(var(--tx), var(--ty)) scale(0.2); /* 尾迹不直接消失 */
+                filter: brightness(0.5);
+            }
+        }
+
+        .blessing p {
+            margin: 15px 0;
+            background: transparent;
+        }
+
+        /* 响应式适配手机端 - 同步放大烟花容器 */
+        @media (max-width: 768px) {
+            .to-name {
+                font-size: 24px;
+                top: 30px;
+            }
+            .heart-container {
+                left: 50%;
+                top: 40%;
+            }
+            .heart {
+                width: 150px;
+                height: 150px;
+                transform: rotate(180deg);
+            }
+            @keyframes beat {
+                0%, 100% { 
+                    transform: rotate(180deg) scale(1); 
+                }
+                25% {
+                    transform: rotate(180deg) scale(1.08);
+                }
+                50% { 
+                    transform: rotate(180deg) scale(1.15); 
+                }
+                75% {
+                    transform: rotate(180deg) scale(1.08);
+                }
+            }
+            .blessing {
+                position: absolute;
+                top: auto;
+                bottom: 100px;
+                right: 50%;
+                transform: translateX(50%);
+                font-size: 16px;
+                max-width: 300px;
+                text-align: center;
+            }
+            /* 移动端烟花容器放大 */
+            .fireworks {
+                top: auto;
+                bottom: 80px;
+                right: 50%;
+                transform: translateX(50%);
+                width: 250px; /* 原150px → 250px */
+                height: 300px; /* 原200px → 300px */
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 顶部专属文字 -->
+    <div class="to-name">to 刘小玲</div>
+
+    <!-- 立体环绕银河背景 -->
+    <div class="galaxy"></div>
+    
+    <!-- 星星的银河背景 -->
+    <div class="stars" id="stars"></div>
+
+    <!-- 流星容器 -->
+    <div class="meteors" id="meteors"></div>
+
+    <!-- 烟花容器（祝福语旁） -->
+    <div class="fireworks" id="fireworks"></div>
+
+    <!-- 红色星星组成的跳动爱心 -->
+    <div class="heart-container">
+        <div class="heart" id="star-heart"></div>
+    </div>
+
+    <!-- 右侧七彩新年祝福语 -->
+    <div class="blessing">
+        <p>新年快乐！</p>
+        <p>希望不用新年你也依旧快乐。</p>
+        <p>2026马年做自己的黑马呀，不管什么都是顺顺的。</p>
+        <p>愿新年胜旧年，愿我们胜过往！</p>
+    </div>
+
+    <script>
+        // 生成5000颗白色银河星星
+        function createBackgroundStars() {
+            const stars = document.getElementById('stars');
+            const starCount = 5000;
+
+            for (let i = 0; i < starCount; i++) {
+                const star = document.createElement('div');
+                const size = Math.random() * 3 + 0.5;
+                const opacity = Math.random() * 1;
+                const x = Math.random() * 100;
+                const y = Math.random() * 100;
+                const animationDuration = Math.random() * 8 + 5;
+                
+                star.style.cssText = `
+                    position: absolute;
+                    width: ${size}px;
+                    height: ${size}px;
+                    background: #fff;
+                    border-radius: 50%;
+                    top: ${y}%;
+                    left: ${x}%;
+                    opacity: ${opacity};
+                    animation: twinkle ${animationDuration}s infinite ease-in-out;
+                    z-index: 1;
+                    border: none;
+                    box-shadow: none;
+                `;
+                
+                stars.appendChild(star);
+            }
+        }
+
+        // 生成1600颗红色星星组成的爱心
+        function createRedStarHeart() {
+            const heart = document.getElementById('star-heart');
+            const heartStarCount = 1600;
+            
+            for (let i = 0; i < heartStarCount; i++) {
+                const star = document.createElement('div');
+                
+                let x = (Math.random() * 2 - 1) * 1.3;
+                let y = (Math.random() * 2 - 1) * 1.3;
+                
+                while (Math.pow((x*x + y*y - 1), 3) - x*x*Math.pow(y, 3) > 0) {
+                    x = (Math.random() * 2 - 1) * 1.3;
+                    y = (Math.random() * 2 - 1) * 1.3;
+                }
+                
+                const px = x * 85 + 100;
+                const py = y * 85 + 100;
+                
+                const size = Math.random() * 3 + 1;
+                const opacity = Math.random() * 0.9 + 0.1;
+                const animationDuration = Math.random() * 3 + 1;
+                const redHue = Math.floor(Math.random() * 20) + 340;
+                
+                star.style.cssText = `
+                    position: absolute;
+                    width: ${size}px;
+                    height: ${size}px;
+                    background: hsl(${redHue}, 100%, 60%);
+                    border-radius: 50%;
+                    top: ${py}px;
+                    left: ${px}px;
+                    opacity: ${opacity};
+                    box-shadow: 0 0 4px hsl(${redHue}, 100%, 50%),
+                                0 0 8px hsl(${redHue}, 100%, 40%);
+                    animation: redTwinkle ${animationDuration}s infinite ease-in-out;
+                    z-index: 6;
+                    border: none;
+                `;
+                
+                heart.appendChild(star);
+            }
+        }
+
+        // 流星效果
+        function createMeteors() {
+            const meteors = document.getElementById('meteors');
+            const meteorCount = 8; // 少量流星，不影响性能
+            
+            for (let i = 0; i < meteorCount; i++) {
+                const meteor = document.createElement('div');
+                const size = Math.random() * 3 + 1;
+                const x = Math.random() * 100;
+                const y = Math.random() * 50;
+                const duration = Math.random() * 5 + 10;
+                const delay = Math.random() * 20;
+                
+                meteor.style.cssText = `
+                    position: absolute;
+                    width: ${size * 10}px;
+                    height: ${size}px;
+                    background: linear-gradient(90deg, #fff, transparent);
+                    border-radius: 50%;
+                    top: ${y}%;
+                    left: ${x}%;
+                    opacity: 0;
+                    transform: rotate(-45deg);
+                    animation: meteor ${duration}s linear ${delay}s infinite;
+                    z-index: 2;
+                    pointer-events: none;
+                `;
+                
+                meteors.appendChild(meteor);
+            }
+        }
+
+        // 圆点形状烟花效果 - 圆形对称绽放+物理轨迹+亮度衰减
+        function createFireworks() {
+            const fireworks = document.getElementById('fireworks');
+            const fireworkCount = 6; 
+            const particleCount = 80; // 粒子数，保证圆点烟花填充饱满
+
+            // 生成烟花（圆形对称绽放）
+            function generateFirework() {
+                // 烟花爆炸中心点（容器内随机）
+                const centerX = Math.random() * 100;
+                const centerY = Math.random() * 100;
+                // 烟花爆炸半径（统一半径，保证圆形）
+                const radius = Math.random() * 80 + 60; // 60-140px
+                
+                // 按角度生成对称粒子（模拟真实圆形烟花）
+                for (let i = 0; i < particleCount; i++) {
+                    const particle = document.createElement('div');
+                    // 均匀分配角度，保证圆形
+                    const angle = (i / particleCount) * Math.PI * 2;
+                    // 计算粒子最终位置（圆形轨迹）
+                    const tx = Math.cos(angle) * radius + 'px';
+                    const ty = Math.sin(angle) * radius + 'px';
+                    
+                    // 随机七彩颜色（同色系渐变，更真实）
+                    const baseHue = Math.floor(Math.random() * 360);
+                    const hue = baseHue + Math.floor(Math.random() * 20) - 10; // 同色系±10度
+                    
+                    // 圆点尺寸：6-14px 随机大小，模拟真实烟花圆点
+                    const size = Math.random() * 8 + 6; 
+                    
+                    // 动画时长（物理减速：边缘粒子速度慢）
+                    const duration = Math.random() * 2 + 2; // 2-4秒
+                    const delay = Math.random() * 0.5; // 轻微延迟，模拟爆炸层次感
+
+                    particle.style.cssText = `
+                        position: absolute;
+                        width: ${size}px;
+                        height: ${size}px;
+                        background: hsl(${hue}, 100%, 60%);
+                        border-radius: 50%; /* 纯圆形圆点 */
+                        top: ${centerY}%;
+                        left: ${centerX}%;
+                        opacity: 0;
+                        // 真实烟花尾迹发光
+                        box-shadow: 0 0 8px hsl(${hue}, 100%, 50%),
+                                    0 0 16px hsl(${hue}, 100%, 40%),
+                                    0 0 24px hsl(${hue}, 100%, 30%);
+                        --tx: ${tx};
+                        --ty: ${ty};
+                        animation: firework ${duration}s ease-out ${delay}s forwards;
+                        z-index: 9;
+                        pointer-events: none;
+                    `;
+
+                    fireworks.appendChild(particle);
+
+                    // 动画结束后移除粒子
+                    setTimeout(() => {
+                        particle.remove();
+                    }, (duration + delay) * 1000);
+                }
+            }
+
+            // 初始生成
+            generateFirework();
+            // 每隔3-5秒生成新烟花
+            setInterval(generateFirework, Math.random() * 2000 + 3000);
+        }
+
+        // 基础闪烁动画
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes twinkle {
+                0%, 100% { opacity: 0.2; transform: scale(0.8); }
+                50% { opacity: 1; transform: scale(1.2); }
+            }
+            @keyframes redTwinkle {
+                0%, 100% { opacity: 0.4; transform: scale(0.9); }
+                50% { opacity: 1; transform: scale(1.3); }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // 初始化所有效果
+        createBackgroundStars();
+        createRedStarHeart();
+        createMeteors();
+        createFireworks();
+    </script>
+</body>
+</html>
